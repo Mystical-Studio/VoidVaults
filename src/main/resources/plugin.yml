@@ -1,0 +1,4 @@
+name: VoidVaults
+version: '1.0-SNAPSHOT'
+main: VoidVaults
+api-version: '1.21'
