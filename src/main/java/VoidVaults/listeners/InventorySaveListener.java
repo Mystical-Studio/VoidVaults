@@ -2,6 +2,7 @@ package VoidVaults.listeners;
 
 import VoidVaults.VoidVaults;
 import VoidVaults.data.StorageHandler;
+import VoidVaults.utils.NavigatorUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,10 +25,10 @@ public class InventorySaveListener implements Listener {
     public void onInventoryClose(InventoryCloseEvent event) {
         if (!(event.getPlayer() instanceof Player player)) return;
 
-        String title = event.getView().getTitle();
-        if (!title.startsWith(ChatColor.DARK_PURPLE + "Void Vault")) return;
+        String title = ChatColor.stripColor(event.getView().getTitle());
+        if (!title.startsWith("Void Vault")) return;
 
-        int page = 1; // For now, hardcoded page
+        int page = NavigatorUtil.getVaultNumber(player);
 
         Inventory inventory = event.getInventory();
 

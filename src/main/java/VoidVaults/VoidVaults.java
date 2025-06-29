@@ -15,7 +15,7 @@ public final class VoidVaults extends JavaPlugin {
     public void onEnable() {
 
         this.storageHandler = new StorageHandler(getDataFolder());
-        getCommand("ec").setExecutor(new OpenEnderChestCommand(this, storageHandler));
+        getCommand("vv").setExecutor(new OpenEnderChestCommand(this, storageHandler));
         getServer().getPluginManager().registerEvents(new InventorySaveListener(this, storageHandler), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(this), this);
 

@@ -30,4 +30,22 @@ public class NavigatorUtil {
         Inventory gui = VaultGUI.createVaultGUI(player, contents, page);
         player.openInventory(gui);
     }
+
+    public static int getVaultNumber(Player player) {
+        String title = ChatColor.stripColor(player.getOpenInventory().getTitle());
+
+        // Expecting title format: "Void Vault - Page X"
+        String[] parts = title.split(" ");
+        for (int i = 0; i < parts.length; i++) {
+            if (parts[i].equalsIgnoreCase("Page") && i + 1 < parts.length) {
+                try {
+                    return Integer.parseInt(parts[i + 1]);
+                } catch (NumberFormatException ignored) {
+                    return 1; // Default if parsing fails
+                }
+            }
+        }
+
+        return 1; // Default if format doesn't match
+    }
 }

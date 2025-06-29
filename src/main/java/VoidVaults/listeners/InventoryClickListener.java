@@ -2,6 +2,7 @@ package VoidVaults.listeners;
 
 import VoidVaults.VoidVaults;
 import VoidVaults.gui.VaultGUI;
+import VoidVaults.utils.NavigatorUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -57,15 +58,12 @@ public class InventoryClickListener implements Listener {
 
                     if (displayName.equalsIgnoreCase("Next Page")) {
                         // Handle going to the next page
-                        player.sendMessage(ChatColor.GREEN + "Going to next page...");
-                        // You would call VaultGUI.open(player, currentPage + 1);
-
+                        NavigatorUtil.openVault(player, NavigatorUtil.getVaultNumber(player) + 1);
                     }
 
                     if (displayName.equalsIgnoreCase("Previous Page")) {
                         // Handle going to the previous page
-                        player.sendMessage(ChatColor.GREEN + "Going to previous page...");
-                        // You would call VaultGUI.open(player, currentPage - 1);
+                        NavigatorUtil.openVault(player, NavigatorUtil.getVaultNumber(player) - 1);
                     }
                 }
             }
