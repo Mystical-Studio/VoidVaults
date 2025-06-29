@@ -9,12 +9,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class OpenEnderChestCommand implements CommandExecutor {
+public class OpenVaultCommand implements CommandExecutor {
 
     private final VoidVaults plugin;
     private final StorageHandler storage;
 
-    public OpenEnderChestCommand(VoidVaults plugin, StorageHandler storage) {
+    public OpenVaultCommand(VoidVaults plugin, StorageHandler storage) {
         this.plugin = plugin;
         this.storage = storage;
     }
