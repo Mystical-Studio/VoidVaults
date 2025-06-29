@@ -58,6 +58,24 @@ public class OpenEnderChestCommand implements CommandExecutor {
             }
         }
 
+        // Create Previous Page button
+        ItemStack prevPage = new ItemStack(Material.ARROW);
+        ItemMeta prevMeta = prevPage.getItemMeta();
+        if (prevMeta != null) {
+            prevMeta.setDisplayName(ChatColor.YELLOW + "Previous Page");
+            prevPage.setItemMeta(prevMeta);
+        }
+        vault.setItem(45, prevPage); // Bottom-left
+
+        // Create Next Page button
+        ItemStack nextPage = new ItemStack(Material.ARROW);
+        ItemMeta nextMeta = nextPage.getItemMeta();
+        if (nextMeta != null) {
+            nextMeta.setDisplayName(ChatColor.YELLOW + "Next Page");
+            nextPage.setItemMeta(nextMeta);
+        }
+        vault.setItem(53, nextPage); // Bottom-right
+
         // Place stored items into usable area (slots 10–16, 19–25, 28–34)
         int[] usableSlots = {
                 10, 11, 12, 13, 14, 15, 16,
