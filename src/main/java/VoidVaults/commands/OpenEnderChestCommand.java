@@ -4,6 +4,8 @@ import VoidVaults.VoidVaults;
 import VoidVaults.data.StorageHandler;
 import VoidVaults.gui.VaultGUI;
 
+import VoidVaults.utils.PermissionUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,6 +27,11 @@ public class OpenEnderChestCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) return true;
         Player player = (Player) sender;
+
+        if (PermissionUtil.getMaxPages(player) < 1) {
+            player.sendMessage(ChatColor.RED + "You have not unlocked vault pages.");
+            return true;
+        }
 
         int page = 1;
         ItemStack[] contents = storage.loadVault(player.getUniqueId(), page);
