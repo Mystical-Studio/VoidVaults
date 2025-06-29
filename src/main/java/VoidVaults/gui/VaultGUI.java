@@ -31,14 +31,17 @@ public class VaultGUI {
             }
         }
 
-        // Create Previous Page button
-        ItemStack prevPage = new ItemStack(Material.ARROW);
-        ItemMeta prevMeta = prevPage.getItemMeta();
-        if (prevMeta != null) {
-            prevMeta.setDisplayName(ChatColor.YELLOW + "Previous Page");
-            prevPage.setItemMeta(prevMeta);
+        if (page != 1) {
+            // Create Previous Page button
+            ItemStack prevPage = new ItemStack(Material.ARROW);
+            ItemMeta prevMeta = prevPage.getItemMeta();
+            if (prevMeta != null) {
+                prevMeta.setDisplayName(ChatColor.YELLOW + "Previous Page");
+                prevPage.setItemMeta(prevMeta);
+            }
+            vault.setItem(45, prevPage); // Bottom-left
         }
-        vault.setItem(45, prevPage); // Bottom-left
+
 
         // Create Next Page button
         ItemStack nextPage = new ItemStack(Material.ARROW);

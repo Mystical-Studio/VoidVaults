@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class VoidVaults extends JavaPlugin {
 
-    private StorageHandler storageHandler;
+    private static StorageHandler storageHandler;
 
     @Override
     public void onEnable() {
@@ -21,13 +21,12 @@ public final class VoidVaults extends JavaPlugin {
 
     }
 
-    public StorageHandler getStorageHandler() {
+    public static StorageHandler getStorageHandler() {
         return storageHandler;
     }
 
     @Override
     public void onDisable() {
-
 
     }
 }
