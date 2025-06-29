@@ -3,6 +3,6 @@ version: '1.0-SNAPSHOT'
 main: VoidVaults.VoidVaults
 api-version: '1.21'
 commands:
-  ec:
+  vv:
     description: Opens your Voild Vault.
     usage: /<command>
