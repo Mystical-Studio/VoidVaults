@@ -25,7 +25,7 @@ public class InventoryClickListener implements Listener {
         if (!(event.getWhoClicked() instanceof Player player)) return;
 
         String title = event.getView().getTitle();
-        if (!title.startsWith(ChatColor.DARK_PURPLE + "Void Vault")) return;
+        if (!title.startsWith(ChatColor.BLACK + "Void Vault")) return;
 
         int rawSlot = event.getRawSlot(); // Includes top and bottom
         int slot = event.getSlot();       // Relative to top or bottom depending on context

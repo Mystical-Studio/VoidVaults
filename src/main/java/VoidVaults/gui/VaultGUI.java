@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class VaultGUI {
 
     public static Inventory createVaultGUI(Player player, ItemStack[] storedContents, int page) {
-        Inventory vault = Bukkit.createInventory(player, 54, ChatColor.DARK_PURPLE + "Void Vault - Page " + page);
+        Inventory vault = Bukkit.createInventory(player, 54, ChatColor.BLACK + "Void Vault - Page " + page);
 
         // Black glass pane item
         ItemStack glass = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
