@@ -2,10 +2,13 @@ package VoidVaults.listeners;
 
 import VoidVaults.VoidVaults;
 import VoidVaults.data.StorageHandler;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 public class InventorySaveListener implements Listener {
 
@@ -22,10 +25,24 @@ public class InventorySaveListener implements Listener {
         if (!(event.getPlayer() instanceof Player player)) return;
 
         String title = event.getView().getTitle();
-        if (!title.startsWith("Void Vault - Page ")) return;
+        if (!title.startsWith(ChatColor.DARK_PURPLE + "Void Vault")) return;
 
-        int page = Integer.parseInt(title.replace("Void Vault - Page ", ""));
-        storage.saveVault(player.getUniqueId(), event.getInventory().getContents(), page);
+        int page = 1; // For now, hardcoded page
+
+        Inventory inventory = event.getInventory();
+
+        int[] usableSlots = {
+                10, 11, 12, 13, 14, 15, 16,
+                19, 20, 21, 22, 23, 24, 25,
+                28, 29, 30, 31, 32, 33, 34
+        };
+
+        ItemStack[] savedContents = new ItemStack[usableSlots.length];
+        for (int i = 0; i < usableSlots.length; i++) {
+            savedContents[i] = inventory.getItem(usableSlots[i]);
+        }
+
+        storage.saveVault(player.getUniqueId(), savedContents, page);
     }
-
 }
+
