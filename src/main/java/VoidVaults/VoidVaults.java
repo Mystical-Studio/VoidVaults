@@ -1,22 +1,31 @@
 package VoidVaults;
 
 import VoidVaults.commands.OpenEnderChestCommand;
+import VoidVaults.data.StorageHandler;
+import VoidVaults.listeners.InventorySaveListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class VoidVaults extends JavaPlugin {
 
+    private StorageHandler storageHandler;
+
     @Override
     public void onEnable() {
-        // Plugin startup logic
-        getCommand("ec").setExecutor(new OpenEnderChestCommand(this));
-        Bukkit.getLogger().info("Hello world!");
 
+        this.storageHandler = new StorageHandler(getDataFolder());
+        getCommand("ec").setExecutor(new OpenEnderChestCommand(this, storageHandler));
+        getServer().getPluginManager().registerEvents(new InventorySaveListener(this, storageHandler), this);
+
+    }
+
+    public StorageHandler getStorageHandler() {
+        return storageHandler;
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
-        Bukkit.getLogger().info("Shutting down!");
+
+
     }
 }
